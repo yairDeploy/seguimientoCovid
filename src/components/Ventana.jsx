@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button,Modal } from 'react-bootstrap';
 
-class Example extends Component {
+class Ventana extends Component {
 
     state = {
         show:false,
@@ -56,7 +56,7 @@ class Example extends Component {
                         <Modal.Header className="alert alert-primary">
                             <Modal.Title>{this.props.item.Country_text}</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
+                        <Modal.Body style={{ backgroundImage: `url("fondo280.png")` }}>
                             <table className="table">
                                 <tbody>
                             {
@@ -81,9 +81,9 @@ class Example extends Component {
             );
         }
         
-        return <h1>Cargando</h1>
+        return <></>
     }
 }
 
 
-export default Example;
+export default Ventana;

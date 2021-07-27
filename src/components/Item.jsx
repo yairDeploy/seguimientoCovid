@@ -5,10 +5,10 @@ class Item extends Component {
     render() {
         return (
             <Fragment>
-                <label className="strong">
+                <label className="strong label-title">
                     <b>{this.props.nombre} : </b>
                 </label>
-                <label>
+                <label >
                     {this.props.valor}
                 </label>
                 <br/>

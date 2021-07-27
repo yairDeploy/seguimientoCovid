@@ -1,6 +1,7 @@
 import React from 'react'
 import Item from './Item';
-import Example from './Example';
+import Ventana from './Ventana';
+import mundocovid from '../mundocovid.jpg';
 
 class Lista extends React.Component{
     state = {
@@ -27,21 +28,28 @@ class Lista extends React.Component{
         this.setState({show:true});
     };
 
-    showModal = (elemento) => {
+    showVentana = (elemento) => {
         this.setState({item:elemento})
     }
+    
     
 
     render(){
         if(this.state.isFetch){
             return (
                 <div className="container mt-5">
-                    <h1 className="alert alert-danger">Seguimiento de COVID -19 por Pais</h1>
+                    <h1 className="alert alert-danger text-center">Seguimiento de COVID -19 por Pais</h1>
+                        <img src={mundocovid}  alt="Mundo rodeado por virus de covid" />
+
+                        <div className="alert alert-warning"> 
+                            <h2>Lista de Paises </h2>
+                            <label>Para más detalles da click en el país</label>
+                        </div>
                         <ul className="list-group">
                         {
                             this.state.estadisticas.map( (item,index) =>(
                              
-                                <li className="list-group-item" key={index} onClick={() =>this.showModal(item)} >
+                                <li className="list-group-item rounded" key={index} onClick={() =>this.showVentana(item)} >
                                     <Item nombre="Pais" valor ={item.Country_text}></Item>
                                     <Item nombre="Total de casos" valor ={item["Total Cases_text"]}></Item>
                                     <Item nombre="Total de Muertes" valor ={item["Total Deaths_text"]}></Item>
@@ -49,17 +57,17 @@ class Lista extends React.Component{
                                     <Item nombre="Nuevos Casos" valor ={item["New Cases_text"]}></Item>
                                     <Item nombre="Nuevas Muertes" valor ={item["New Deaths_text"]}></Item>
                                     <Item nombre="Ultima actualización" valor ={item['Last Update']}></Item>
-                                    
                                 </li>
                             ))
                         }
                         </ul>
-                        <Example item={this.state.item} show={(this.state.item === null? false:true)}></Example>
+                        <Ventana item={this.state.item} show={(this.state.item === null? false:true)}></Ventana>
                     
                 </div>
             )
+        }else{
+            return "Cargando"
         }
-        return "Cargando"
     }
 
 }
